@@ -1,0 +1,215 @@
+Name,OpName,FwOps,BwOps,AccOps,Prev,Next,InputShapes,OutputShape,LinearWeightTrainable,LoraRank
+input_ids,misc,[],[],[],set(),"{'model_embed_token', 'siz', 'getattr_'}",[],"(4, 512)",True,0
+size,misc,[],[],[],"{""'input_ids""}","{'getite', 'getitem_'}","[(4, 512)]","(1,)",True,0
+getitem,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}",{'expan'},"[(1,)]","(1,)",True,0
+getitem_1,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}","{'su', 'add_', 'expan', 'ful', 'g', 'ad', 'vie'}","[(1,)]","(1,)",True,0
+add,misc,[],[],[],"{""'getitem_1""}",{'arang'},"[(1,)]","(1,)",True,0
+getattr_1,misc,[],[],[],"{""'input_ids""}",{'arang'},"[(4, 512)]","(1,)",True,0
+arange,misc,[],[],[],"{""'getattr_1"", ""'add""}",{'unsqueez'},"[(1,), (1,)]","(512,)",True,0
+unsqueeze,misc,[],[],[],"{""'arange""}",{'vie'},"[(512,)]","(1, 512)",True,0
+view,misc,[],[],[],"{""'getitem_1"", ""'unsqueeze""}","{'getitem_', 'getitem_1'}","[(1, 512), (1,)]","(1, 512)",True,0
+model_embed_tokens,misc,[],[],[],"{""'input_ids""}","{'add_1', 'to_', 'getattr_'}","[(4, 512)]","(4, 512, 5120)",False,0
+add_1,misc,[],[],[],"{""'getitem_1""}",{'su'},"[(1,)]","(1,)",True,0
+sub,misc,[],[],[],"{""'add_1"", ""'getitem_1""}","{'gt_', 'add_', 'sub_'}","[(1,), (1,)]","(1,)",True,0
+gt,misc,[],[],[],"{""'getitem_1""}",set(),"[(1,)]","(1,)",True,0
+getattr_2,misc,[],[],[],"{""'model_embed_tokens""}","{'t', 'finfo_', 'finf'}","[(4, 512, 5120)]","(1,)",True,0
+finfo,misc,[],[],[],"{""'getattr_2""}",{'getattr_'},"[(1,)]","(1,)",True,0
+getattr_3,misc,[],[],[],"{""'finfo""}",{'ful'},"[(1,)]","(1,)",True,0
+getattr_4,misc,[],[],[],"{""'model_embed_tokens""}","{'ful', 'arange_'}","[(4, 512, 5120)]","(1,)",True,0
+full,misc,[],[],[],"{""'getattr_3"", ""'getitem_1"", ""'getattr_4""}","{'masked_fill', 't', 'size_'}","[(1,), (1,), (1,)]","(512, 512)",True,0
+size_1,misc,[],[],[],"{""'full""}",{'arange_'},"[(512, 512)]","(1,)",True,0
+arange_1,misc,[],[],[],"{""'getattr_4"", ""'size_1""}","{'l', 'add_'}","[(1,), (1,)]","(512,)",True,0
+add_2,VECaddu,"[['VECaddu', (1, 512)]]","[['MEM', ((1, 512),)]]",[],"{""'arange_1""}",{'view_'},"[(512,)]","(512,)",True,0
+size_2,misc,[],[],[],"{""'full""}",{'view_'},"[(512, 512)]","(1,)",True,0
+view_1,misc,[],[],[],"{""'add_2"", ""'size_2""}",{'l'},"[(512,), (1,)]","(512, 1)",True,0
+lt,misc,[],[],[],"{""'arange_1"", ""'view_1""}",{'masked_fill'},"[(512,), (512, 1)]","(512, 512)",True,0
+masked_fill_,misc,[],[],[],"{""'full"", ""'lt""}",set(),"[(512, 512), (512, 512)]","(512, 512)",True,0
+to,misc,[],[],[],"{""'full"", ""'getattr_2""}","{'masked_fill__', 'ones_lik', 'getitem_'}","[(512, 512), (1,)]","(512, 512)",True,0
+gt_1,misc,[],[],[],"{""'sub""}",set(),"[(1,)]","(1,)",True,0
+sub_1,misc,[],[],[],"{""'sub""}",{'add_'},"[(1,)]","(1,)",True,0
+add_3,misc,[],[],[],"{""'sub_1""}",{'tri'},"[(1,)]","(1,)",True,0
+ones_like,misc,[],[],[],"{""'to""}",{'tri'},"[(512, 512)]","(512, 512)",True,0
+triu,misc,[],[],[],"{""'ones_like"", ""'add_3""}",{'sub_'},"[(512, 512), (1,)]","(512, 512)",True,0
+sub_2,misc,[],[],[],"{""'triu""}",{'bool_'},"[(512, 512)]","(512, 512)",True,0
+bool_1,misc,[],[],[],"{""'sub_2""}",{'masked_fill__'},"[(512, 512)]","(512, 512)",True,0
+finfo_1,misc,[],[],[],"{""'getattr_2""}",{'getattr_'},"[(1,)]","(1,)",True,0
+getattr_5,misc,[],[],[],"{""'finfo_1""}",{'masked_fill__'},"[(1,)]","(1,)",True,0
+masked_fill__1,misc,[],[],[],"{""'to"", ""'getattr_5"", ""'bool_1""}",set(),"[(512, 512), (512, 512), (1,)]","(512, 512)",True,0
+getitem_2,getitem,"[['MEM', ((512, 512), (1, 1, 512, 512))]]","[['MEM', ((512, 512),)], ['MEM', ((512, 512),)]]",[],"{""'to""}",{'expan'},"[(512, 512)]","(1, 1, 512, 512)",True,0
+add_4,misc,[],[],[],"{""'getitem_1"", ""'sub""}",{'expan'},"[(1,), (1,)]","(1,)",True,0
+expand,misc,[],[],[],"{""'getitem"", ""'getitem_2"", ""'getitem_1"", ""'add_4""}","{'add_1', 'size_1'}","[(1, 1, 512, 512), (1,), (1,), (1,)]","(4, 1, 512, 512)",True,0
+to_1,misc,[],[],[],"{""'model_embed_tokens""}","{'mu', 'pow_'}","[(4, 512, 5120)]","(4, 512, 5120)",False,0
+pow_1,VECpowu,"[['VECpowu', (2048, 5120)]]","[['VECpowu', (2048, 5120)], ['VECmul', (2048, 5120)], ['VECmulu', (2048, 5120)]]",[],"{""'to_1""}",{'mea'},"[(4, 512, 5120)]","(4, 512, 5120)",False,0
+mean,mean,"[['MEM', ((4, 512, 5120), (4, 512, 1))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'pow_1""}",{'add_'},"[(4, 512, 5120)]","(4, 512, 1)",False,0
+add_5,VECaddu,"[['VECaddu', (2048, 1)]]","[['MEM', ((2048, 1),)]]",[],"{""'mean""}",{'rsqr'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+rsqrt,rsqrt,"[['MEM', ((4, 512, 1), (4, 512, 1))]]","[['MEM', ((4, 512, 1), (4, 512, 1))]]",[],"{""'add_5""}",{'mu'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+mul,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'to_1"", ""'rsqrt""}",{'to_'},"[(4, 512, 5120), (4, 512, 1)]","(4, 512, 5120)",False,0
+model_layers_0_input_layernorm_weight,Weight,[],[],"[['VECadd', [1, 5120]]]",set(),{'mul_'},[],"(5120,)",False,0
+getattr_6,misc,[],[],[],"{""'model_embed_tokens""}",{'to_'},"[(4, 512, 5120)]","(1,)",False,0
+to_2,misc,[],[],[],"{""'mul"", ""'getattr_6""}",{'mul_'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",False,0
+mul_1,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'model_layers_0_input_layernorm_weight"", ""'to_2""}","{'to_', 'model_layers_0_self_attn_v_proj_base_laye', 'model_layers_0_self_attn_k_proj_base_laye', 'model_layers_0_self_attn_q_proj_base_laye', 'size_'}","[(5120,), (4, 512, 5120)]","(4, 512, 5120)",False,0
+size_3,misc,[],[],[],"{""'mul_1""}",{'getitem_'},"[(4, 512, 5120)]","(1,)",True,0
+getitem_3,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_3""}","{'reshape_', 'view_', 'ne_', 'n'}","[(1,)]","(1,)",True,0
+getitem_4,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_3""}","{'reshape_', 'view_', 'ne_', 'n'}","[(1,)]","(1,)",True,0
+getitem_5,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_3""}",set(),"[(1,)]","(1,)",True,0
+model_layers_0_self_attn_q_proj_base_layer,Linear,"[['Linear', (2048, 5120, 5120)]]","[['Linear', (2048, 5120, 5120)]]",[],"{""'mul_1""}","{'add_', 'getattr_'}","[(4, 512, 5120)]","(4, 512, 5120)",False,0
+model_layers_0_self_attn_q_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_'},[],"(10, 5120)",True,0
+getattr_7,misc,[],[],[],"{""'model_layers_0_self_attn_q_proj_lora_a_default_weight""}",{'to_'},"[(10, 5120)]","(1,)",True,0
+to_3,misc,[],[],[],"{""'mul_1"", ""'getattr_7""}",{'model_layers_0_self_attn_q_proj_lora_dropout_defaul'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_q_proj_lora_dropout_default,dropout,"[['MEM', ((4, 512, 5120), (4, 512, 5120))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'to_3""}",{'model_layers_0_self_attn_q_proj_lora_a_defaul'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_q_proj_lora_a_default,Linear,"[['Linear', (2048, 5120, 10)]]","[['Linear', (2048, 10, 5120)], ['Linear', (10, 2048, 5120)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 10]]]","{""'model_layers_0_self_attn_q_proj_lora_dropout_default""}",{'model_layers_0_self_attn_q_proj_lora_b_defaul'},"[(4, 512, 5120)]","(4, 512, 10)",True,0
+model_layers_0_self_attn_q_proj_lora_b_default,Linear,"[['Linear', (2048, 10, 5120)]]","[['Linear', (2048, 5120, 10)], ['Linear', (5120, 2048, 10)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 5120]]]","{""'model_layers_0_self_attn_q_proj_lora_a_default""}",{'mul_'},"[(4, 512, 10)]","(4, 512, 5120)",True,0
+mul_2,VECmulu,"[['VECmulu', (2048, 5120)]]","[['VECmulu', (2048, 5120)]]",[],"{""'model_layers_0_self_attn_q_proj_lora_b_default""}",{'add_'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+add_6,VECadd,"[['VECadd', (2048, 5120)]]","[['MEM', ((2048, 5120),)], ['MEM', ((2048, 5120),)]]",[],"{""'model_layers_0_self_attn_q_proj_base_layer"", ""'mul_2""}",{'to_'},"[(4, 512, 5120), (4, 512, 5120)]","(4, 512, 5120)",True,0
+getattr_8,misc,[],[],[],"{""'model_layers_0_self_attn_q_proj_base_layer""}",{'to_'},"[(4, 512, 5120)]","(1,)",True,0
+to_4,misc,[],[],[],"{""'add_6"", ""'getattr_8""}",{'view_'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_k_proj_base_layer,Linear,"[['Linear', (2048, 5120, 1024)]]","[['Linear', (2048, 1024, 5120)]]",[],"{""'mul_1""}","{'getattr_1', 'add_'}","[(4, 512, 5120)]","(4, 512, 1024)",False,0
+model_layers_0_self_attn_k_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_'},[],"(10, 5120)",True,0
+getattr_9,misc,[],[],[],"{""'model_layers_0_self_attn_k_proj_lora_a_default_weight""}",{'to_'},"[(10, 5120)]","(1,)",True,0
+to_5,misc,[],[],[],"{""'mul_1"", ""'getattr_9""}",{'model_layers_0_self_attn_k_proj_lora_dropout_defaul'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_k_proj_lora_dropout_default,dropout,"[['MEM', ((4, 512, 5120), (4, 512, 5120))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'to_5""}",{'model_layers_0_self_attn_k_proj_lora_a_defaul'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_k_proj_lora_a_default,Linear,"[['Linear', (2048, 5120, 10)]]","[['Linear', (2048, 10, 5120)], ['Linear', (10, 2048, 5120)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 10]]]","{""'model_layers_0_self_attn_k_proj_lora_dropout_default""}",{'model_layers_0_self_attn_k_proj_lora_b_defaul'},"[(4, 512, 5120)]","(4, 512, 10)",True,0
+model_layers_0_self_attn_k_proj_lora_b_default,Linear,"[['Linear', (2048, 10, 1024)]]","[['Linear', (2048, 1024, 10)], ['Linear', (1024, 2048, 10)]]","[['VECadd', [1, 10240]], ['VECadd', [1, 1024]]]","{""'model_layers_0_self_attn_k_proj_lora_a_default""}",{'mul_'},"[(4, 512, 10)]","(4, 512, 1024)",True,0
+mul_3,VECmulu,"[['VECmulu', (2048, 1024)]]","[['VECmulu', (2048, 1024)]]",[],"{""'model_layers_0_self_attn_k_proj_lora_b_default""}",{'add_'},"[(4, 512, 1024)]","(4, 512, 1024)",True,0
+add_7,VECadd,"[['VECadd', (2048, 1024)]]","[['MEM', ((2048, 1024),)], ['MEM', ((2048, 1024),)]]",[],"{""'model_layers_0_self_attn_k_proj_base_layer"", ""'mul_3""}",{'to_'},"[(4, 512, 1024), (4, 512, 1024)]","(4, 512, 1024)",True,0
+getattr_10,misc,[],[],[],"{""'model_layers_0_self_attn_k_proj_base_layer""}",{'to_'},"[(4, 512, 1024)]","(1,)",True,0
+to_6,misc,[],[],[],"{""'add_7"", ""'getattr_10""}",{'view_'},"[(4, 512, 1024), (1,)]","(4, 512, 1024)",True,0
+model_layers_0_self_attn_v_proj_base_layer,Linear,"[['Linear', (2048, 5120, 1024)]]","[['Linear', (2048, 1024, 5120)]]",[],"{""'mul_1""}","{'getattr_1', 'add_'}","[(4, 512, 5120)]","(4, 512, 1024)",False,0
+model_layers_0_self_attn_v_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_1'},[],"(10, 5120)",True,0
+getattr_11,misc,[],[],[],"{""'model_layers_0_self_attn_v_proj_lora_a_default_weight""}",{'to_'},"[(10, 5120)]","(1,)",True,0
+to_7,misc,[],[],[],"{""'mul_1"", ""'getattr_11""}",{'model_layers_0_self_attn_v_proj_lora_dropout_defaul'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_v_proj_lora_dropout_default,dropout,"[['MEM', ((4, 512, 5120), (4, 512, 5120))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'to_7""}",{'model_layers_0_self_attn_v_proj_lora_a_defaul'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_v_proj_lora_a_default,Linear,"[['Linear', (2048, 5120, 10)]]","[['Linear', (2048, 10, 5120)], ['Linear', (10, 2048, 5120)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 10]]]","{""'model_layers_0_self_attn_v_proj_lora_dropout_default""}",{'model_layers_0_self_attn_v_proj_lora_b_defaul'},"[(4, 512, 5120)]","(4, 512, 10)",True,0
+model_layers_0_self_attn_v_proj_lora_b_default,Linear,"[['Linear', (2048, 10, 1024)]]","[['Linear', (2048, 1024, 10)], ['Linear', (1024, 2048, 10)]]","[['VECadd', [1, 10240]], ['VECadd', [1, 1024]]]","{""'model_layers_0_self_attn_v_proj_lora_a_default""}",{'mul_'},"[(4, 512, 10)]","(4, 512, 1024)",True,0
+mul_4,VECmulu,"[['VECmulu', (2048, 1024)]]","[['VECmulu', (2048, 1024)]]",[],"{""'model_layers_0_self_attn_v_proj_lora_b_default""}",{'add_'},"[(4, 512, 1024)]","(4, 512, 1024)",True,0
+add_8,VECadd,"[['VECadd', (2048, 1024)]]","[['MEM', ((2048, 1024),)], ['MEM', ((2048, 1024),)]]",[],"{""'model_layers_0_self_attn_v_proj_base_layer"", ""'mul_4""}",{'to_'},"[(4, 512, 1024), (4, 512, 1024)]","(4, 512, 1024)",True,0
+getattr_12,misc,[],[],[],"{""'model_layers_0_self_attn_v_proj_base_layer""}",{'to_'},"[(4, 512, 1024)]","(1,)",True,0
+to_8,misc,[],[],[],"{""'add_8"", ""'getattr_12""}",{'view_'},"[(4, 512, 1024), (1,)]","(4, 512, 1024)",True,0
+view_2,misc,[],[],[],"{""'to_4"", ""'getitem_3"", ""'getitem_4""}",{'transpos'},"[(4, 512, 5120), (1,), (1,)]","(4, 512, 40, 128)",True,0
+transpose,misc,[],[],[],"{""'view_2""}","{'mul_', 'getitem_1', 'size_'}","[(4, 512, 40, 128)]","(4, 40, 512, 128)",True,0
+view_3,misc,[],[],[],"{""'to_6"", ""'getitem_3"", ""'getitem_4""}",{'transpose_'},"[(4, 512, 1024), (1,), (1,)]","(4, 512, 8, 128)",True,0
+transpose_1,misc,[],[],[],"{""'view_3""}","{'mul_', 'getitem_1', 'size_'}","[(4, 512, 8, 128)]","(4, 8, 512, 128)",True,0
+view_4,misc,[],[],[],"{""'getitem_3"", ""'getitem_4"", ""'to_8""}",{'transpose_'},"[(4, 512, 1024), (1,), (1,)]","(4, 512, 8, 128)",True,0
+transpose_2,misc,[],[],[],"{""'view_4""}","{'getattr_1', 'size_1', 'getitem_2', 'outpu'}","[(4, 512, 8, 128)]","(4, 8, 512, 128)",True,0
+size_4,misc,[],[],[],"{""'transpose_1""}",{'getitem_'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_6,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_4""}",{'add_'},"[(1,)]","(1,)",True,0
+add_9,misc,[],[],[],"{""'getitem_6""}","{'gt_', 'getitem_', 'ne_', 'n'}","[(1,)]","(1,)",True,0
+gt_2,misc,[],[],[],"{""'add_9""}",set(),"[(1,)]","(1,)",True,0
+model_layers_0_self_attn_rotary_emb_cos_cached,misc,[],[],[],set(),{'getitem_'},[],"(32768, 128)",True,0
+getitem_7,getitem,"[['MEM', ((32768, 128), (1,), (512, 128))]]","[['MEM', ((32768, 128), (1,))], ['MEM', ((32768, 128), (1,))]]",[],"{""'model_layers_0_self_attn_rotary_emb_cos_cached"", ""'add_9""}",{'to_'},"[(32768, 128), (1,)]","(512, 128)",True,0
+getattr_13,misc,[],[],[],"{""'transpose_2""}",{'to_'},"[(4, 8, 512, 128)]","(1,)",True,0
+to_9,misc,[],[],[],"{""'getitem_7"", ""'getattr_13""}",{'getitem_'},"[(512, 128), (1,)]","(512, 128)",True,0
+model_layers_0_self_attn_rotary_emb_sin_cached,misc,[],[],[],set(),{'getitem_'},[],"(32768, 128)",True,0
+getitem_8,getitem,"[['MEM', ((32768, 128), (1,), (512, 128))]]","[['MEM', ((32768, 128), (1,))], ['MEM', ((32768, 128), (1,))]]",[],"{""'model_layers_0_self_attn_rotary_emb_sin_cached"", ""'add_9""}",{'to_1'},"[(32768, 128), (1,)]","(512, 128)",True,0
+getattr_14,misc,[],[],[],"{""'transpose_2""}",{'to_1'},"[(4, 8, 512, 128)]","(1,)",True,0
+to_10,misc,[],[],[],"{""'getattr_14"", ""'getitem_8""}",{'getitem_1'},"[(512, 128), (1,)]","(512, 128)",True,0
+getitem_9,getitem,"[['MEM', ((512, 128), (1, 512), (1, 512, 128))]]","[['MEM', ((512, 128), (1, 512))], ['MEM', ((512, 128), (1, 512))]]",[],"{""'view"", ""'to_9""}",{'unsqueeze_'},"[(512, 128), (1, 512)]","(1, 512, 128)",True,0
+unsqueeze_1,misc,[],[],[],"{""'getitem_9""}",{'mul_'},"[(1, 512, 128)]","(1, 1, 512, 128)",True,0
+getitem_10,getitem,"[['MEM', ((512, 128), (1, 512), (1, 512, 128))]]","[['MEM', ((512, 128), (1, 512))], ['MEM', ((512, 128), (1, 512))]]",[],"{""'view"", ""'to_10""}",{'unsqueeze_'},"[(512, 128), (1, 512)]","(1, 512, 128)",True,0
+unsqueeze_2,misc,[],[],[],"{""'getitem_10""}",{'mul_'},"[(1, 512, 128)]","(1, 1, 512, 128)",True,0
+mul_5,VECmul,"[['VECmul', (81920, 128)]]","[['VECmul', (81920, 128)], ['VECmul', (81920, 128)]]",[],"{""'unsqueeze_1"", ""'transpose""}",{'add_1'},"[(4, 40, 512, 128), (1, 1, 512, 128)]","(4, 40, 512, 128)",True,0
+size_5,misc,[],[],[],"{""'transpose""}",{'getitem_1'},"[(4, 40, 512, 128)]","(1,)",True,0
+getitem_11,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_5""}",{'floordi'},"[(1,)]","(1,)",True,0
+floordiv,misc,[],[],[],"{""'getitem_11""}",{'getitem_1'},"[(1,)]","(1,)",True,0
+getitem_12,getitem,"[['MEM', ((4, 40, 512, 128), (1,), (4, 40, 512, 64))]]","[['MEM', ((4, 40, 512, 128), (1,))], ['MEM', ((4, 40, 512, 128), (1,))]]",[],"{""'floordiv"", ""'transpose""}",{'ca'},"[(4, 40, 512, 128), (1,)]","(4, 40, 512, 64)",True,0
+size_6,misc,[],[],[],"{""'transpose""}",{'getitem_1'},"[(4, 40, 512, 128)]","(1,)",True,0
+getitem_13,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_6""}",{'floordiv_'},"[(1,)]","(1,)",True,0
+floordiv_1,misc,[],[],[],"{""'getitem_13""}",{'getitem_1'},"[(1,)]","(1,)",True,0
+getitem_14,getitem,"[['MEM', ((4, 40, 512, 128), (1,), (4, 40, 512, 64))]]","[['MEM', ((4, 40, 512, 128), (1,))], ['MEM', ((4, 40, 512, 128), (1,))]]",[],"{""'floordiv_1"", ""'transpose""}",{'ne'},"[(4, 40, 512, 128), (1,)]","(4, 40, 512, 64)",True,0
+neg,misc,[],[],[],"{""'getitem_14""}",{'ca'},"[(4, 40, 512, 64)]","(4, 40, 512, 64)",True,0
+cat,misc,[],[],[],"{""'getitem_12"", ""'neg""}",{'mul_'},"[(4, 40, 512, 64), (4, 40, 512, 64)]","(4, 40, 512, 128)",True,0
+mul_6,VECmul,"[['VECmul', (81920, 128)]]","[['VECmul', (81920, 128)], ['VECmul', (81920, 128)]]",[],"{""'cat"", ""'unsqueeze_2""}",{'add_1'},"[(4, 40, 512, 128), (1, 1, 512, 128)]","(4, 40, 512, 128)",True,0
+add_10,VECadd,"[['VECadd', (81920, 128)]]","[['MEM', ((81920, 128),)], ['MEM', ((81920, 128),)]]",[],"{""'mul_6"", ""'mul_5""}","{'getattr_1', 'matmu'}","[(4, 40, 512, 128), (4, 40, 512, 128)]","(4, 40, 512, 128)",True,0
+mul_7,VECmul,"[['VECmul', (16384, 128)]]","[['VECmul', (16384, 128)], ['VECmul', (16384, 128)]]",[],"{""'unsqueeze_1"", ""'transpose_1""}",{'add_1'},"[(4, 8, 512, 128), (1, 1, 512, 128)]","(4, 8, 512, 128)",True,0
+size_7,misc,[],[],[],"{""'transpose_1""}",{'getitem_1'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_15,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_7""}",{'floordiv_'},"[(1,)]","(1,)",True,0
+floordiv_2,misc,[],[],[],"{""'getitem_15""}",{'getitem_1'},"[(1,)]","(1,)",True,0
+getitem_16,getitem,"[['MEM', ((4, 8, 512, 128), (1,), (4, 8, 512, 64))]]","[['MEM', ((4, 8, 512, 128), (1,))], ['MEM', ((4, 8, 512, 128), (1,))]]",[],"{""'transpose_1"", ""'floordiv_2""}",{'cat_'},"[(4, 8, 512, 128), (1,)]","(4, 8, 512, 64)",True,0
+size_8,misc,[],[],[],"{""'transpose_1""}",{'getitem_1'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_17,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_8""}",{'floordiv_'},"[(1,)]","(1,)",True,0
+floordiv_3,misc,[],[],[],"{""'getitem_17""}",{'getitem_1'},"[(1,)]","(1,)",True,0
+getitem_18,getitem,"[['MEM', ((4, 8, 512, 128), (1,), (4, 8, 512, 64))]]","[['MEM', ((4, 8, 512, 128), (1,))], ['MEM', ((4, 8, 512, 128), (1,))]]",[],"{""'floordiv_3"", ""'transpose_1""}",{'neg_'},"[(4, 8, 512, 128), (1,)]","(4, 8, 512, 64)",True,0
+neg_1,misc,[],[],[],"{""'getitem_18""}",{'cat_'},"[(4, 8, 512, 64)]","(4, 8, 512, 64)",True,0
+cat_1,misc,[],[],[],"{""'neg_1"", ""'getitem_16""}",{'mul_'},"[(4, 8, 512, 64), (4, 8, 512, 64)]","(4, 8, 512, 128)",True,0
+mul_8,VECmul,"[['VECmul', (16384, 128)]]","[['VECmul', (16384, 128)], ['VECmul', (16384, 128)]]",[],"{""'cat_1"", ""'unsqueeze_2""}",{'add_1'},"[(4, 8, 512, 128), (1, 1, 512, 128)]","(4, 8, 512, 128)",True,0
+add_11,VECadd,"[['VECadd', (16384, 128)]]","[['MEM', ((16384, 128),)], ['MEM', ((16384, 128),)]]",[],"{""'mul_8"", ""'mul_7""}","{'size_1', 'outpu', 'getitem_2', 'size_'}","[(4, 8, 512, 128), (4, 8, 512, 128)]","(4, 8, 512, 128)",True,0
+size_9,misc,[],[],[],"{""'add_11""}",{'getitem_1'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_19,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_9""}",{'add_1'},"[(1,)]","(1,)",True,0
+add_12,misc,[],[],[],"{""'getitem_19""}",set(),"[(1,)]","(1,)",True,0
+size_10,misc,[],[],[],"{""'add_11""}",{'getitem_2'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_20,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_10""}","{'reshap', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_21,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_10""}","{'mul_', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_22,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_10""}","{'reshap', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_23,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_10""}","{'reshap', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_24,getitem,"[['MEM', ((4, 8, 512, 128), (4, 8, 1, 512, 128))]]","[['MEM', ((4, 8, 512, 128),)], ['MEM', ((4, 8, 512, 128),)]]",[],"{""'add_11""}",{'expand_'},"[(4, 8, 512, 128)]","(4, 8, 1, 512, 128)",True,0
+expand_1,misc,[],[],[],"{""'getitem_24"", ""'getitem_21"", ""'getitem_22"", ""'getitem_23"", ""'getitem_20""}",{'reshap'},"[(4, 8, 1, 512, 128), (1,), (1,), (1,), (1,)]","(4, 8, 5, 512, 128)",True,0
+mul_9,misc,[],[],[],"{""'getitem_21""}",{'reshap'},"[(1,)]","(1,)",True,0
+reshape,misc,[],[],[],"{""'expand_1"", ""'getitem_22"", ""'getitem_23"", ""'mul_9"", ""'getitem_20""}",{'transpose_'},"[(4, 8, 5, 512, 128), (1,), (1,), (1,), (1,)]","(4, 40, 512, 128)",True,0
+size_11,misc,[],[],[],"{""'transpose_2""}",{'getitem_2'},"[(4, 8, 512, 128)]","(1,)",True,0
+getitem_25,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_11""}","{'reshape_', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_26,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_11""}","{'mul_1', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_27,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_11""}","{'reshape_', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_28,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_11""}","{'reshape_', 'expand_'}","[(1,)]","(1,)",True,0
+getitem_29,getitem,"[['MEM', ((4, 8, 512, 128), (4, 8, 1, 512, 128))]]","[['MEM', ((4, 8, 512, 128),)], ['MEM', ((4, 8, 512, 128),)]]",[],"{""'transpose_2""}",{'expand_'},"[(4, 8, 512, 128)]","(4, 8, 1, 512, 128)",True,0
+expand_2,misc,[],[],[],"{""'getitem_25"", ""'getitem_26"", ""'getitem_29"", ""'getitem_28"", ""'getitem_27""}",{'reshape_'},"[(4, 8, 1, 512, 128), (1,), (1,), (1,), (1,)]","(4, 8, 5, 512, 128)",True,0
+mul_10,misc,[],[],[],"{""'getitem_26""}",{'reshape_'},"[(1,)]","(1,)",True,0
+reshape_1,misc,[],[],[],"{""'getitem_25"", ""'mul_10"", ""'expand_2"", ""'getitem_28"", ""'getitem_27""}",{'matmul_'},"[(4, 8, 5, 512, 128), (1,), (1,), (1,), (1,)]","(4, 40, 512, 128)",True,0
+transpose_3,misc,[],[],[],"{""'reshape""}",{'matmu'},"[(4, 40, 512, 128)]","(4, 40, 128, 512)",True,0
+matmul,BMM,"[['BMM', (160, 512, 128, 512)]]","[['BMM', (160, 512, 512, 128)], ['BMM', (160, 128, 512, 512)]]",[],"{""'transpose_3"", ""'add_10""}",{'truedi'},"[(4, 40, 512, 128), (4, 40, 128, 512)]","(4, 40, 512, 512)",True,0
+truediv,VECdivu,"[['VECdivu', (81920, 512)]]","[['VECdivu', (81920, 512)]]",[],"{""'matmul""}","{'add_1', 'size_1'}","[(4, 40, 512, 512)]","(4, 40, 512, 512)",True,0
+size_12,misc,[],[],[],"{""'truediv""}",{'n'},"[(4, 40, 512, 512)]","(1,)",True,0
+ne,misc,[],[],[],"{""'size_12"", ""'getitem_3"", ""'getitem_4"", ""'add_9""}",set(),"[(1,), (1,), (1,), (1,)]","(1,)",True,0
+size_13,misc,[],[],[],"{""'expand""}",{'ne_'},"[(4, 1, 512, 512)]","(1,)",True,0
+ne_1,misc,[],[],[],"{""'size_13"", ""'getitem_3"", ""'getitem_4"", ""'add_9""}",set(),"[(1,), (1,), (1,), (1,)]","(1,)",True,0
+add_13,VECadd,"[['VECadd', (81920, 512)]]","[['MEM', ((81920, 512),)], ['MEM', ((81920, 512),)]]",[],"{""'expand"", ""'truediv""}",{'softma'},"[(4, 40, 512, 512), (4, 1, 512, 512)]","(4, 40, 512, 512)",True,0
+softmax,VECsoftmax,"[['VECsoftmax', (81920, 512)]]","[['VECmul', (81920, 512)], ['VECsoftmax', (81920, 512)]]",[],"{""'add_13""}",{'to_1'},"[(4, 40, 512, 512)]","(4, 40, 512, 512)",True,0
+getattr_15,misc,[],[],[],"{""'add_10""}",{'to_1'},"[(4, 40, 512, 128)]","(1,)",True,0
+to_11,misc,[],[],[],"{""'softmax"", ""'getattr_15""}",{'dropou'},"[(4, 40, 512, 512), (1,)]","(4, 40, 512, 512)",True,0
+dropout,dropout,"[['MEM', ((4, 40, 512, 512), (4, 40, 512, 512))]]","[['MEM', ((4, 40, 512, 512),)], ['MEM', ((4, 40, 512, 512),)]]",[],"{""'to_11""}",{'matmul_'},"[(4, 40, 512, 512)]","(4, 40, 512, 512)",True,0
+matmul_1,BMM,"[['BMM', (160, 512, 512, 128)]]","[['BMM', (160, 512, 128, 512)], ['BMM', (160, 512, 512, 128)]]",[],"{""'dropout"", ""'reshape_1""}","{'transpose_', 'size_1'}","[(4, 40, 512, 512), (4, 40, 512, 128)]","(4, 40, 512, 128)",True,0
+size_14,misc,[],[],[],"{""'matmul_1""}",{'ne_'},"[(4, 40, 512, 128)]","(1,)",True,0
+ne_2,misc,[],[],[],"{""'getitem_4"", ""'size_14"", ""'getitem_3""}",set(),"[(1,), (1,), (1,)]","(1,)",True,0
+transpose_4,misc,[],[],[],"{""'matmul_1""}",{'contiguou'},"[(4, 40, 512, 128)]","(4, 512, 40, 128)",True,0
+contiguous,contiguous,"[['MEM', ((4, 512, 40, 128), (4, 512, 40, 128))]]","[['MEM', ((4, 512, 40, 128),)], ['MEM', ((4, 512, 40, 128),)]]",[],"{""'transpose_4""}",{'reshape_'},"[(4, 512, 40, 128)]","(4, 512, 40, 128)",True,0
+reshape_2,misc,[],[],[],"{""'contiguous"", ""'getitem_3"", ""'getitem_4""}","{'model_layers_0_self_attn_o_proj_base_laye', 'to_1'}","[(4, 512, 40, 128), (1,), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_o_proj_base_layer,Linear,"[['Linear', (2048, 5120, 5120)]]","[['Linear', (2048, 5120, 5120)]]",[],"{""'reshape_2""}","{'add_1', 'getattr_1'}","[(4, 512, 5120)]","(4, 512, 5120)",False,0
+model_layers_0_self_attn_o_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_1'},[],"(10, 5120)",True,0
+getattr_16,misc,[],[],[],"{""'model_layers_0_self_attn_o_proj_lora_a_default_weight""}",{'to_1'},"[(10, 5120)]","(1,)",True,0
+to_12,misc,[],[],[],"{""'reshape_2"", ""'getattr_16""}",{'model_layers_0_self_attn_o_proj_lora_dropout_defaul'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_o_proj_lora_dropout_default,dropout,"[['MEM', ((4, 512, 5120), (4, 512, 5120))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'to_12""}",{'model_layers_0_self_attn_o_proj_lora_a_defaul'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+model_layers_0_self_attn_o_proj_lora_a_default,Linear,"[['Linear', (2048, 5120, 10)]]","[['Linear', (2048, 10, 5120)], ['Linear', (10, 2048, 5120)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 10]]]","{""'model_layers_0_self_attn_o_proj_lora_dropout_default""}",{'model_layers_0_self_attn_o_proj_lora_b_defaul'},"[(4, 512, 5120)]","(4, 512, 10)",True,0
+model_layers_0_self_attn_o_proj_lora_b_default,Linear,"[['Linear', (2048, 10, 5120)]]","[['Linear', (2048, 5120, 10)], ['Linear', (5120, 2048, 10)]]","[['VECadd', [1, 51200]], ['VECadd', [1, 5120]]]","{""'model_layers_0_self_attn_o_proj_lora_a_default""}",{'mul_1'},"[(4, 512, 10)]","(4, 512, 5120)",True,0
+mul_11,VECmulu,"[['VECmulu', (2048, 5120)]]","[['VECmulu', (2048, 5120)]]",[],"{""'model_layers_0_self_attn_o_proj_lora_b_default""}",{'add_1'},"[(4, 512, 5120)]","(4, 512, 5120)",True,0
+add_14,VECadd,"[['VECadd', (2048, 5120)]]","[['MEM', ((2048, 5120),)], ['MEM', ((2048, 5120),)]]",[],"{""'model_layers_0_self_attn_o_proj_base_layer"", ""'mul_11""}",{'to_1'},"[(4, 512, 5120), (4, 512, 5120)]","(4, 512, 5120)",True,0
+getattr_17,misc,[],[],[],"{""'model_layers_0_self_attn_o_proj_base_layer""}",{'to_1'},"[(4, 512, 5120)]","(1,)",True,0
+to_13,misc,[],[],[],"{""'add_14"", ""'getattr_17""}",{'add_1'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",True,0
+add_15,VECadd,"[['VECadd', (2048, 5120)]]","[['MEM', ((2048, 5120),)], ['MEM', ((2048, 5120),)]]",[],"{""'model_embed_tokens"", ""'to_13""}","{'add_1', 'getattr_1', 'to_1'}","[(4, 512, 5120), (4, 512, 5120)]","(4, 512, 5120)",True,0
+to_14,misc,[],[],[],"{""'add_15""}","{'mul_1', 'pow_'}","[(4, 512, 5120)]","(4, 512, 5120)",False,0
+pow_2,VECpowu,"[['VECpowu', (2048, 5120)]]","[['VECpowu', (2048, 5120)], ['VECmul', (2048, 5120)], ['VECmulu', (2048, 5120)]]",[],"{""'to_14""}",{'mean_'},"[(4, 512, 5120)]","(4, 512, 5120)",False,0
+mean_1,mean,"[['MEM', ((4, 512, 5120), (4, 512, 1))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'pow_2""}",{'add_1'},"[(4, 512, 5120)]","(4, 512, 1)",False,0
+add_16,VECaddu,"[['VECaddu', (2048, 1)]]","[['MEM', ((2048, 1),)]]",[],"{""'mean_1""}",{'rsqrt_'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+rsqrt_1,rsqrt,"[['MEM', ((4, 512, 1), (4, 512, 1))]]","[['MEM', ((4, 512, 1), (4, 512, 1))]]",[],"{""'add_16""}",{'mul_1'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+mul_12,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'to_14"", ""'rsqrt_1""}",{'to_1'},"[(4, 512, 5120), (4, 512, 1)]","(4, 512, 5120)",False,0
+model_layers_0_post_attention_layernorm_weight,Weight,[],[],"[['VECadd', [1, 5120]]]",set(),{'mul_1'},[],"(5120,)",False,0
+getattr_18,misc,[],[],[],"{""'add_15""}",{'to_1'},"[(4, 512, 5120)]","(1,)",False,0
+to_15,misc,[],[],[],"{""'mul_12"", ""'getattr_18""}",{'mul_1'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",False,0
+mul_13,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'model_layers_0_post_attention_layernorm_weight"", ""'to_15""}","{'model_layers_0_mlp_up_pro', 'model_layers_0_mlp_gate_pro'}","[(5120,), (4, 512, 5120)]","(4, 512, 5120)",False,0
+model_layers_0_mlp_gate_proj,Linear,"[['Linear', (2048, 5120, 27648)]]","[['Linear', (2048, 27648, 5120)]]",[],"{""'mul_13""}",{'model_layers_0_mlp_act_f'},"[(4, 512, 5120)]","(4, 512, 27648)",False,0
+model_layers_0_mlp_act_fn,VECrelu,"[['VECrelu', (2048, 27648)]]","[['VECrelu', (2048, 27648)]]",[],"{""'model_layers_0_mlp_gate_proj""}",{'mul_1'},"[(4, 512, 27648)]","(4, 512, 27648)",True,0
+model_layers_0_mlp_up_proj,Linear,"[['Linear', (2048, 5120, 27648)]]","[['Linear', (2048, 27648, 5120)]]",[],"{""'mul_13""}",{'mul_1'},"[(4, 512, 5120)]","(4, 512, 27648)",False,0
+mul_14,VECmul,"[['VECmul', (2048, 27648)]]","[['VECmul', (2048, 27648)], ['VECmul', (2048, 27648)]]",[],"{""'model_layers_0_mlp_act_fn"", ""'model_layers_0_mlp_up_proj""}",{'model_layers_0_mlp_down_pro'},"[(4, 512, 27648), (4, 512, 27648)]","(4, 512, 27648)",True,0
+model_layers_0_mlp_down_proj,Linear,"[['Linear', (2048, 27648, 5120)]]","[['Linear', (2048, 5120, 27648)]]",[],"{""'mul_14""}",{'add_1'},"[(4, 512, 27648)]","(4, 512, 5120)",False,0
+add_17,VECadd,"[['VECadd', (2048, 5120)]]","[['MEM', ((2048, 5120),)], ['MEM', ((2048, 5120),)]]",[],"{""'model_layers_0_mlp_down_proj"", ""'add_15""}","{'getattr_1', 'to_1'}","[(4, 512, 5120), (4, 512, 5120)]","(4, 512, 5120)",True,0
+to_16,misc,[],[],[],"{""'add_17""}","{'mul_1', 'pow_'}","[(4, 512, 5120)]","(4, 512, 5120)",False,0
+pow_3,VECpowu,"[['VECpowu', (2048, 5120)]]","[['VECpowu', (2048, 5120)], ['VECmul', (2048, 5120)], ['VECmulu', (2048, 5120)]]",[],"{""'to_16""}",{'mean_'},"[(4, 512, 5120)]","(4, 512, 5120)",False,0
+mean_2,mean,"[['MEM', ((4, 512, 5120), (4, 512, 1))]]","[['MEM', ((4, 512, 5120),)], ['MEM', ((4, 512, 5120),)]]",[],"{""'pow_3""}",{'add_1'},"[(4, 512, 5120)]","(4, 512, 1)",False,0
+add_18,VECaddu,"[['VECaddu', (2048, 1)]]","[['MEM', ((2048, 1),)]]",[],"{""'mean_2""}",{'rsqrt_'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+rsqrt_2,rsqrt,"[['MEM', ((4, 512, 1), (4, 512, 1))]]","[['MEM', ((4, 512, 1), (4, 512, 1))]]",[],"{""'add_18""}",{'mul_1'},"[(4, 512, 1)]","(4, 512, 1)",False,0
+mul_15,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'to_16"", ""'rsqrt_2""}",{'to_1'},"[(4, 512, 5120), (4, 512, 1)]","(4, 512, 5120)",False,0
+model_norm_weight,Weight,[],[],"[['VECadd', [1, 5120]]]",set(),{'mul_1'},[],"(5120,)",False,0
+getattr_19,misc,[],[],[],"{""'add_17""}",{'to_1'},"[(4, 512, 5120)]","(1,)",False,0
+to_17,misc,[],[],[],"{""'getattr_19"", ""'mul_15""}",{'mul_1'},"[(4, 512, 5120), (1,)]","(4, 512, 5120)",False,0
+mul_16,VECmul,"[['VECmul', (2048, 5120)]]","[['VECmul', (2048, 5120)], ['VECmul', (2048, 5120)]]",[],"{""'model_norm_weight"", ""'to_17""}",{'lm_hea'},"[(5120,), (4, 512, 5120)]","(4, 512, 5120)",False,0
+lm_head,Linear,"[['Linear', (2048, 5120, 152064)]]","[['Linear', (2048, 152064, 5120)]]",[],"{""'mul_16""}",{'float_'},"[(4, 512, 5120)]","(4, 512, 152064)",False,0
+float_1,misc,[],[],[],"{""'lm_head""}",{'outpu'},"[(4, 512, 152064)]","(4, 512, 152064)",True,0
+output,output,[],[],[],"{""'transpose_2"", ""'float_1"", ""'add_11""}",set(),"[(4, 512, 152064), (4, 8, 512, 128), (4, 8, 512, 128)]","(4, 512, 152064)",True,0

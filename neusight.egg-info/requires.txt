@@ -1,0 +1,9 @@
+torch
+pandas
+tensorboard
+transformers==4.38.1
+pandas
+numpy
+tqdm
+torchvision
+scipy

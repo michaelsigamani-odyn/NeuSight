@@ -1,0 +1,11 @@
+{
+    "architecture": "MICRO_VEC",
+    "name": "MICRO_VEC",
+    "features": [
+        "B",
+        "H",
+        "MemPerO",
+        "SingleFLOPs",
+        "Mem_Bw"
+    ]
+}

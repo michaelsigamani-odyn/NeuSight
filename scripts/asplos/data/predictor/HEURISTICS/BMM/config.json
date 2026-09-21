@@ -1,0 +1,12 @@
+{
+    "architecture": "HEURISTIC_MM",
+    "name": "HEURISTIC_MM",
+    "features": [
+        "B",
+        "M",
+        "N",
+        "K",
+        "SingleFLOPs",
+        "Mem_Bw"
+    ]
+}

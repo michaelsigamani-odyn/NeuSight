@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+neusight/__init__.py
+neusight.egg-info/PKG-INFO
+neusight.egg-info/SOURCES.txt
+neusight.egg-info/dependency_links.txt
+neusight.egg-info/requires.txt
+neusight.egg-info/top_level.txt

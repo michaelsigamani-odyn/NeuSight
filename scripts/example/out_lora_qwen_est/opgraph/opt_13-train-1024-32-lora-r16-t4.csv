@@ -1,0 +1,162 @@
+Name,OpName,FwOps,BwOps,AccOps,Prev,Next,InputShapes,OutputShape,LinearWeightTrainable,LoraRank
+input_ids,misc,[],[],[],set(),"{'vie', 'siz'}",[],"(32, 1024)",True,0
+size,misc,[],[],[],"{""'input_ids""}","{'getitem_', 'getite'}","[(32, 1024)]","(1,)",True,0
+getitem,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}",{'vie'},"[(1,)]","(1,)",True,0
+view,misc,[],[],[],"{""'input_ids"", ""'getitem""}",{'model_decoder_embed_token'},"[(32, 1024), (1,)]","(32, 1024)",True,0
+model_decoder_embed_tokens,EMBEDDING,"[['MEM', ((32, 1024), (32, 1024, 2048))]]","[['MEM', ((50272, 2048),)], ['MEM', ((50272, 2048),)]]","[['VECadd', [1, 102957056]]]","{""'view""}","{'getattr_', 'add_'}","[(32, 1024)]","(32, 1024, 2048)",False,0
+getitem_1,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}",{'one'},"[(1,)]","(1,)",True,0
+getitem_2,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}",{'ad'},"[(1,)]","(1,)",True,0
+add,misc,[],[],[],"{""'getitem_2""}",{'one'},"[(1,)]","(1,)",True,0
+getattr_1,misc,[],[],[],"{""'model_decoder_embed_tokens""}",{'one'},"[(32, 1024, 2048)]","(1,)",True,0
+ones,misc,[],[],[],"{""'getitem_1"", ""'getattr_1"", ""'add""}","{'getattr_', 'getitem_', 'lon', 'size_'}","[(1,), (1,), (1,)]","(32, 1024)",True,0
+getitem_3,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}",{'add_'},"[(1,)]","(1,)",True,0
+add_1,misc,[],[],[],"{""'getitem_3""}",{'su'},"[(1,)]","(1,)",True,0
+size_1,misc,[],[],[],"{""'ones""}",set(),"[(32, 1024)]","(1,)",True,0
+getitem_4,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size""}","{'g', 'ful', 'expand_', 'su', 'add_', 'expan'}","[(1,)]","(1,)",True,0
+size_2,misc,[],[],[],"{""'ones""}",{'getitem_'},"[(32, 1024)]","(1,)",True,0
+getitem_5,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_2""}",{'expan'},"[(1,)]","(1,)",True,0
+gt,misc,[],[],[],"{""'getitem_4""}",set(),"[(1,)]","(1,)",True,0
+sub,misc,[],[],[],"{""'getitem_4"", ""'add_1""}","{'gt_', 'add_'}","[(1,), (1,)]","(1,)",True,0
+getattr_2,misc,[],[],[],"{""'model_decoder_embed_tokens""}","{'to_', 'finfo_', 'finf', 't'}","[(32, 1024, 2048)]","(1,)",True,0
+finfo,misc,[],[],[],"{""'getattr_2""}",{'getattr_'},"[(1,)]","(1,)",True,0
+getattr_3,misc,[],[],[],"{""'finfo""}",{'ful'},"[(1,)]","(1,)",True,0
+getattr_4,misc,[],[],[],"{""'ones""}","{'arang', 'ful'}","[(32, 1024)]","(1,)",True,0
+full,misc,[],[],[],"{""'getitem_4"", ""'getattr_3"", ""'getattr_4""}","{'masked_fill', 't', 'size_'}","[(1,), (1,), (1,)]","(1024, 1024)",True,0
+size_3,misc,[],[],[],"{""'full""}",{'arang'},"[(1024, 1024)]","(1,)",True,0
+arange,misc,[],[],[],"{""'getattr_4"", ""'size_3""}","{'l', 'add_'}","[(1,), (1,)]","(1024,)",True,0
+add_2,VECaddu,"[['VECaddu', (1, 1024)]]","[['MEM', ((1, 1024),)]]",[],"{""'arange""}",{'view_'},"[(1024,)]","(1024,)",True,0
+size_4,misc,[],[],[],"{""'full""}",{'view_'},"[(1024, 1024)]","(1,)",True,0
+view_1,misc,[],[],[],"{""'size_4"", ""'add_2""}",{'l'},"[(1024,), (1,)]","(1024, 1)",True,0
+lt,misc,[],[],[],"{""'view_1"", ""'arange""}",{'masked_fill'},"[(1024,), (1024, 1)]","(1024, 1024)",True,0
+masked_fill_,misc,[],[],[],"{""'lt"", ""'full""}",set(),"[(1024, 1024), (1024, 1024)]","(1024, 1024)",True,0
+to,misc,[],[],[],"{""'getattr_2"", ""'full""}",{'getitem_'},"[(1024, 1024), (1,)]","(1024, 1024)",True,0
+gt_1,misc,[],[],[],"{""'sub""}",set(),"[(1,)]","(1,)",True,0
+getitem_6,getitem,"[['MEM', ((1024, 1024), (1, 1, 1024, 1024))]]","[['MEM', ((1024, 1024),)], ['MEM', ((1024, 1024),)]]",[],"{""'to""}",{'expan'},"[(1024, 1024)]","(1, 1, 1024, 1024)",True,0
+add_3,misc,[],[],[],"{""'getitem_4"", ""'sub""}",{'expan'},"[(1,), (1,)]","(1,)",True,0
+expand,misc,[],[],[],"{""'getitem_4"", ""'getitem_5"", ""'getitem_6"", ""'add_3""}",{'masked_fill_'},"[(1, 1, 1024, 1024), (1,), (1,), (1,)]","(32, 1, 1024, 1024)",True,0
+size_5,misc,[],[],[],"{""'ones""}",{'getitem_'},"[(32, 1024)]","(1,)",True,0
+getitem_7,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_5""}",{'expand_'},"[(1,)]","(1,)",True,0
+getitem_8,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_5""}",{'expand_'},"[(1,)]","(1,)",True,0
+getitem_9,getitem,"[['MEM', ((32, 1024), (32, 1, 1, 1024))]]","[['MEM', ((32, 1024),)], ['MEM', ((32, 1024),)]]",[],"{""'ones""}",{'expand_'},"[(32, 1024)]","(32, 1, 1, 1024)",True,0
+expand_1,misc,[],[],[],"{""'getitem_4"", ""'getitem_7"", ""'getitem_8"", ""'getitem_9""}",{'to_'},"[(32, 1, 1, 1024), (1,), (1,), (1,)]","(32, 1, 1024, 1024)",True,0
+to_1,misc,[],[],[],"{""'expand_1"", ""'getattr_2""}",{'sub_'},"[(32, 1, 1024, 1024), (1,)]","(32, 1, 1024, 1024)",True,0
+sub_1,misc,[],[],[],"{""'to_1""}","{'to_', 'masked_fil'}","[(32, 1, 1024, 1024)]","(32, 1, 1024, 1024)",True,0
+to_2,misc,[],[],[],"{""'sub_1""}",{'masked_fil'},"[(32, 1, 1024, 1024)]","(32, 1, 1024, 1024)",True,0
+finfo_1,misc,[],[],[],"{""'getattr_2""}",{'getattr_'},"[(1,)]","(1,)",True,0
+getattr_5,misc,[],[],[],"{""'finfo_1""}",{'masked_fil'},"[(1,)]","(1,)",True,0
+masked_fill,misc,[],[],[],"{""'sub_1"", ""'to_2"", ""'getattr_5""}",{'to_'},"[(32, 1, 1024, 1024), (32, 1, 1024, 1024), (1,)]","(32, 1, 1024, 1024)",True,0
+getattr_6,misc,[],[],[],"{""'ones""}",{'to_'},"[(32, 1024)]","(1,)",True,0
+to_3,misc,[],[],[],"{""'getattr_6"", ""'masked_fill""}",{'bool_'},"[(32, 1, 1024, 1024), (1,)]","(32, 1, 1024, 1024)",True,0
+bool_1,misc,[],[],[],"{""'to_3""}",{'masked_fill_'},"[(32, 1, 1024, 1024)]","(32, 1, 1024, 1024)",True,0
+finfo_2,misc,[],[],[],"{""'getattr_2""}",{'getattr_'},"[(1,)]","(1,)",True,0
+getattr_7,misc,[],[],[],"{""'finfo_2""}",{'masked_fill_'},"[(1,)]","(1,)",True,0
+masked_fill_1,misc,[],[],[],"{""'bool_1"", ""'expand"", ""'getattr_7""}","{'add_', 'size_'}","[(32, 1, 1024, 1024), (32, 1, 1024, 1024), (1,)]","(32, 1, 1024, 1024)",True,0
+long,misc,[],[],[],"{""'ones""}","{'mu', 'cumsu', 'type_a'}","[(32, 1024)]","(32, 1024)",False,0
+cumsum,cumsum,"[['MEM', ((32, 1024), (32, 1024))]]","[['MEM', ((32, 1024),)], ['MEM', ((32, 1024),)]]",[],"{""'long""}",{'type_a'},"[(32, 1024)]","(32, 1024)",False,0
+type_as,misc,[],[],[],"{""'long"", ""'cumsum""}",{'mu'},"[(32, 1024), (32, 1024)]","(32, 1024)",False,0
+mul,VECmul,"[['VECmul', (32, 1024)]]","[['VECmul', (32, 1024)], ['VECmul', (32, 1024)]]",[],"{""'long"", ""'type_as""}",{'long_'},"[(32, 1024), (32, 1024)]","(32, 1024)",False,0
+long_1,misc,[],[],[],"{""'mul""}",{'sub_'},"[(32, 1024)]","(32, 1024)",False,0
+sub_2,misc,[],[],[],"{""'long_1""}",{'getitem_1'},"[(32, 1024)]","(32, 1024)",False,0
+getitem_10,getitem,"[['MEM', ((32, 1024), (32, 1024))]]","[['MEM', ((32, 1024),)], ['MEM', ((32, 1024),)]]",[],"{""'sub_2""}",{'add_'},"[(32, 1024)]","(32, 1024)",False,0
+add_4,VECaddu,"[['VECaddu', (32, 1024)]]","[['MEM', ((32, 1024),)]]",[],"{""'getitem_10""}",{'embeddin'},"[(32, 1024)]","(32, 1024)",False,0
+model_decoder_embed_positions_weight,misc,[],[],[],set(),{'embeddin'},[],"(2050, 2048)",False,0
+embedding,misc,[],[],[],"{""'add_4"", ""'model_decoder_embed_positions_weight""}",{'add_'},"[(32, 1024), (2050, 2048)]","(32, 1024, 2048)",False,0
+add_5,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'embedding"", ""'model_decoder_embed_tokens""}","{'add_1', 'model_decoder_layers_0_self_attn_layer_nor'}","[(32, 1024, 2048), (32, 1024, 2048)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_layer_norm,VECln,"[['VECln', (32768, 2048)]]","[['VECmul', (32768, 2048)]]","[['VECadd', [1, 2048]], ['VECadd', [1, 2048]]]","{""'add_5""}","{'model_decoder_layers_0_self_attn_k_proj_base_laye', 'size_', 'to_', 'model_decoder_layers_0_self_attn_q_proj_base_laye', 'model_decoder_layers_0_self_attn_v_proj_base_laye'}","[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+size_6,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_layer_norm""}",{'getitem_1'},"[(32, 1024, 2048)]","(1,)",True,0
+getitem_11,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_6""}","{'reshap', 'view_', 'mul_', 'ne_', 'view_1'}","[(1,)]","(1,)",True,0
+getitem_12,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_6""}","{'reshap', 'view_', 'n', 'ne_', 'view_1'}","[(1,)]","(1,)",True,0
+getitem_13,getitem,"[['MEM', ((1,), (1,))]]","[['MEM', ((1,),)], ['MEM', ((1,),)]]",[],"{""'size_6""}",set(),"[(1,)]","(1,)",True,0
+model_decoder_layers_0_self_attn_q_proj_base_layer,Linear,"[['Linear', (32768, 2048, 2048)]]","[['Linear', (32768, 2048, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_layer_norm""}","{'getattr_', 'add_'}","[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+model_decoder_layers_0_self_attn_q_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_'},[],"(16, 2048)",True,0
+getattr_8,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_q_proj_lora_a_default_weight""}",{'to_'},"[(16, 2048)]","(1,)",True,0
+to_4,misc,[],[],[],"{""'getattr_8"", ""'model_decoder_layers_0_self_attn_layer_norm""}",{'model_decoder_layers_0_self_attn_q_proj_lora_dropout_defaul'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_q_proj_lora_dropout_default,dropout,"[['MEM', ((32, 1024, 2048), (32, 1024, 2048))]]","[['MEM', ((32, 1024, 2048),)], ['MEM', ((32, 1024, 2048),)]]",[],"{""'to_4""}",{'model_decoder_layers_0_self_attn_q_proj_lora_a_defaul'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_q_proj_lora_a_default,Linear,"[['Linear', (32768, 2048, 16)]]","[['Linear', (32768, 16, 2048)], ['Linear', (16, 32768, 2048)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 16]]]","{""'model_decoder_layers_0_self_attn_q_proj_lora_dropout_default""}",{'model_decoder_layers_0_self_attn_q_proj_lora_b_defaul'},"[(32, 1024, 2048)]","(32, 1024, 16)",True,0
+model_decoder_layers_0_self_attn_q_proj_lora_b_default,Linear,"[['Linear', (32768, 16, 2048)]]","[['Linear', (32768, 2048, 16)], ['Linear', (2048, 32768, 16)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 2048]]]","{""'model_decoder_layers_0_self_attn_q_proj_lora_a_default""}",{'mul_'},"[(32, 1024, 16)]","(32, 1024, 2048)",True,0
+mul_1,VECmulu,"[['VECmulu', (32768, 2048)]]","[['VECmulu', (32768, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_q_proj_lora_b_default""}",{'add_'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+add_6,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'mul_1"", ""'model_decoder_layers_0_self_attn_q_proj_base_layer""}",{'to_'},"[(32, 1024, 2048), (32, 1024, 2048)]","(32, 1024, 2048)",True,0
+getattr_9,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_q_proj_base_layer""}",{'to_'},"[(32, 1024, 2048)]","(1,)",True,0
+to_5,misc,[],[],[],"{""'add_6"", ""'getattr_9""}",{'mul_'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+mul_2,VECmulu,"[['VECmulu', (32768, 2048)]]","[['VECmulu', (32768, 2048)]]",[],"{""'to_5""}",{'view_'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_k_proj_base_layer,Linear,"[['Linear', (32768, 2048, 2048)]]","[['Linear', (32768, 2048, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_layer_norm""}","{'add_', 'getattr_1'}","[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+model_decoder_layers_0_self_attn_k_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_1'},[],"(16, 2048)",True,0
+getattr_10,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_k_proj_lora_a_default_weight""}",{'to_'},"[(16, 2048)]","(1,)",True,0
+to_6,misc,[],[],[],"{""'getattr_10"", ""'model_decoder_layers_0_self_attn_layer_norm""}",{'model_decoder_layers_0_self_attn_k_proj_lora_dropout_defaul'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_k_proj_lora_dropout_default,dropout,"[['MEM', ((32, 1024, 2048), (32, 1024, 2048))]]","[['MEM', ((32, 1024, 2048),)], ['MEM', ((32, 1024, 2048),)]]",[],"{""'to_6""}",{'model_decoder_layers_0_self_attn_k_proj_lora_a_defaul'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_k_proj_lora_a_default,Linear,"[['Linear', (32768, 2048, 16)]]","[['Linear', (32768, 16, 2048)], ['Linear', (16, 32768, 2048)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 16]]]","{""'model_decoder_layers_0_self_attn_k_proj_lora_dropout_default""}",{'model_decoder_layers_0_self_attn_k_proj_lora_b_defaul'},"[(32, 1024, 2048)]","(32, 1024, 16)",True,0
+model_decoder_layers_0_self_attn_k_proj_lora_b_default,Linear,"[['Linear', (32768, 16, 2048)]]","[['Linear', (32768, 2048, 16)], ['Linear', (2048, 32768, 16)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 2048]]]","{""'model_decoder_layers_0_self_attn_k_proj_lora_a_default""}",{'mul_'},"[(32, 1024, 16)]","(32, 1024, 2048)",True,0
+mul_3,VECmulu,"[['VECmulu', (32768, 2048)]]","[['VECmulu', (32768, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_k_proj_lora_b_default""}",{'add_'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+add_7,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'model_decoder_layers_0_self_attn_k_proj_base_layer"", ""'mul_3""}",{'to_'},"[(32, 1024, 2048), (32, 1024, 2048)]","(32, 1024, 2048)",True,0
+getattr_11,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_k_proj_base_layer""}",{'to_'},"[(32, 1024, 2048)]","(1,)",True,0
+to_7,misc,[],[],[],"{""'add_7"", ""'getattr_11""}",{'view_'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+view_2,misc,[],[],[],"{""'to_7"", ""'getitem_11""}",{'transpos'},"[(32, 1024, 2048), (1,)]","(32, 1024, 32, 64)",True,0
+transpose,misc,[],[],[],"{""'view_2""}",{'contiguou'},"[(32, 1024, 32, 64)]","(32, 32, 1024, 64)",True,0
+contiguous,contiguous,"[['MEM', ((32, 32, 1024, 64), (32, 32, 1024, 64))]]","[['MEM', ((32, 32, 1024, 64),)], ['MEM', ((32, 32, 1024, 64),)]]",[],"{""'transpose""}","{'view_', 'outpu'}","[(32, 32, 1024, 64)]","(32, 32, 1024, 64)",True,0
+model_decoder_layers_0_self_attn_v_proj_base_layer,Linear,"[['Linear', (32768, 2048, 2048)]]","[['Linear', (32768, 2048, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_layer_norm""}","{'add_', 'getattr_1'}","[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+model_decoder_layers_0_self_attn_v_proj_lora_a_default_weight,misc,[],[],[],set(),{'getattr_1'},[],"(16, 2048)",True,0
+getattr_12,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_v_proj_lora_a_default_weight""}",{'to_'},"[(16, 2048)]","(1,)",True,0
+to_8,misc,[],[],[],"{""'getattr_12"", ""'model_decoder_layers_0_self_attn_layer_norm""}",{'model_decoder_layers_0_self_attn_v_proj_lora_dropout_defaul'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_v_proj_lora_dropout_default,dropout,"[['MEM', ((32, 1024, 2048), (32, 1024, 2048))]]","[['MEM', ((32, 1024, 2048),)], ['MEM', ((32, 1024, 2048),)]]",[],"{""'to_8""}",{'model_decoder_layers_0_self_attn_v_proj_lora_a_defaul'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_v_proj_lora_a_default,Linear,"[['Linear', (32768, 2048, 16)]]","[['Linear', (32768, 16, 2048)], ['Linear', (16, 32768, 2048)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 16]]]","{""'model_decoder_layers_0_self_attn_v_proj_lora_dropout_default""}",{'model_decoder_layers_0_self_attn_v_proj_lora_b_defaul'},"[(32, 1024, 2048)]","(32, 1024, 16)",True,0
+model_decoder_layers_0_self_attn_v_proj_lora_b_default,Linear,"[['Linear', (32768, 16, 2048)]]","[['Linear', (32768, 2048, 16)], ['Linear', (2048, 32768, 16)]]","[['VECadd', [1, 32768]], ['VECadd', [1, 2048]]]","{""'model_decoder_layers_0_self_attn_v_proj_lora_a_default""}",{'mul_'},"[(32, 1024, 16)]","(32, 1024, 2048)",True,0
+mul_4,VECmulu,"[['VECmulu', (32768, 2048)]]","[['VECmulu', (32768, 2048)]]",[],"{""'model_decoder_layers_0_self_attn_v_proj_lora_b_default""}",{'add_'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+add_8,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'model_decoder_layers_0_self_attn_v_proj_base_layer"", ""'mul_4""}",{'to_'},"[(32, 1024, 2048), (32, 1024, 2048)]","(32, 1024, 2048)",True,0
+getattr_13,misc,[],[],[],"{""'model_decoder_layers_0_self_attn_v_proj_base_layer""}",{'to_'},"[(32, 1024, 2048)]","(1,)",True,0
+to_9,misc,[],[],[],"{""'add_8"", ""'getattr_13""}",{'view_'},"[(32, 1024, 2048), (1,)]","(32, 1024, 2048)",True,0
+view_3,misc,[],[],[],"{""'getitem_11"", ""'to_9""}",{'transpose_'},"[(32, 1024, 2048), (1,)]","(32, 1024, 32, 64)",True,0
+transpose_1,misc,[],[],[],"{""'view_3""}",{'contiguous_'},"[(32, 1024, 32, 64)]","(32, 32, 1024, 64)",True,0
+contiguous_1,contiguous,"[['MEM', ((32, 32, 1024, 64), (32, 32, 1024, 64))]]","[['MEM', ((32, 32, 1024, 64),)], ['MEM', ((32, 32, 1024, 64),)]]",[],"{""'transpose_1""}","{'view_', 'outpu'}","[(32, 32, 1024, 64)]","(32, 32, 1024, 64)",True,0
+mul_5,misc,[],[],[],"{""'getitem_11""}",{'view_'},"[(1,)]","(1,)",True,0
+view_4,misc,[],[],[],"{""'getitem_12"", ""'getitem_11"", ""'mul_2""}",{'transpose_'},"[(32, 1024, 2048), (1,), (1,)]","(32, 1024, 32, 64)",True,0
+transpose_2,misc,[],[],[],"{""'view_4""}",{'contiguous_'},"[(32, 1024, 32, 64)]","(32, 32, 1024, 64)",True,0
+contiguous_2,contiguous,"[['MEM', ((32, 32, 1024, 64), (32, 32, 1024, 64))]]","[['MEM', ((32, 32, 1024, 64),)], ['MEM', ((32, 32, 1024, 64),)]]",[],"{""'transpose_2""}",{'view_'},"[(32, 32, 1024, 64)]","(32, 32, 1024, 64)",True,0
+view_5,misc,[],[],[],"{""'contiguous_2"", ""'mul_5""}",{'bm'},"[(32, 32, 1024, 64), (1,)]","(1024, 1024, 64)",True,0
+view_6,misc,[],[],[],"{""'contiguous"", ""'mul_5""}","{'transpose_', 'size_'}","[(32, 32, 1024, 64), (1,)]","(1024, 1024, 64)",True,0
+view_7,misc,[],[],[],"{""'contiguous_1"", ""'mul_5""}",{'bmm_'},"[(32, 32, 1024, 64), (1,)]","(1024, 1024, 64)",True,0
+size_7,misc,[],[],[],"{""'view_6""}","{'view_', 'n', 'ne_'}","[(1024, 1024, 64)]","(1,)",True,0
+transpose_3,misc,[],[],[],"{""'view_6""}",{'bm'},"[(1024, 1024, 64)]","(1024, 64, 1024)",True,0
+bmm,BMM,"[['BMM', (1024, 1024, 64, 1024)]]","[['BMM', (1024, 1024, 1024, 64)], ['BMM', (1024, 64, 1024, 1024)]]",[],"{""'transpose_3"", ""'view_5""}","{'view_', 'size_'}","[(1024, 1024, 64), (1024, 64, 1024)]","(1024, 1024, 1024)",True,0
+size_8,misc,[],[],[],"{""'bmm""}",{'n'},"[(1024, 1024, 1024)]","(1,)",True,0
+mul_6,misc,[],[],[],"{""'getitem_11""}",{'n'},"[(1,)]","(1,)",True,0
+ne,misc,[],[],[],"{""'size_8"", ""'getitem_12"", ""'size_7"", ""'mul_6""}",set(),"[(1,), (1,), (1,), (1,)]","(1,)",True,0
+size_9,misc,[],[],[],"{""'masked_fill_1""}",{'ne_'},"[(32, 1, 1024, 1024)]","(1,)",True,0
+ne_1,misc,[],[],[],"{""'size_7"", ""'getitem_12"", ""'getitem_11"", ""'size_9""}",set(),"[(1,), (1,), (1,), (1,)]","(1,)",True,0
+view_8,misc,[],[],[],"{""'bmm"", ""'getitem_12"", ""'getitem_11"", ""'size_7""}",{'add_'},"[(1024, 1024, 1024), (1,), (1,), (1,)]","(32, 32, 1024, 1024)",True,0
+add_9,VECadd,"[['VECadd', (1048576, 1024)]]","[['MEM', ((1048576, 1024),)], ['MEM', ((1048576, 1024),)]]",[],"{""'masked_fill_1"", ""'view_8""}","{'max_', 'getattr_1'}","[(32, 32, 1024, 1024), (32, 1, 1024, 1024)]","(32, 32, 1024, 1024)",True,0
+getattr_14,misc,[],[],[],"{""'add_9""}",{'finfo_'},"[(32, 32, 1024, 1024)]","(1,)",True,0
+finfo_3,misc,[],[],[],"{""'getattr_14""}",{'getattr_1'},"[(1,)]","(1,)",True,0
+getattr_15,misc,[],[],[],"{""'finfo_3""}",{'tenso'},"[(1,)]","(1,)",True,0
+getattr_16,misc,[],[],[],"{""'add_9""}",{'tenso'},"[(32, 32, 1024, 1024)]","(1,)",True,0
+tensor,misc,[],[],[],"{""'getattr_15"", ""'getattr_16""}",{'max_'},"[(1,), (1,)]","(1,)",True,0
+max_1,misc,[],[],[],"{""'tensor"", ""'add_9""}",{'view_'},"[(32, 32, 1024, 1024), (1,)]","(32, 32, 1024, 1024)",True,0
+mul_7,misc,[],[],[],"{""'getitem_11""}",{'view_'},"[(1,)]","(1,)",True,0
+view_9,misc,[],[],[],"{""'size_7"", ""'getitem_12"", ""'max_1"", ""'mul_7""}","{'softma', 'getattr_1'}","[(32, 32, 1024, 1024), (1,), (1,), (1,)]","(1024, 1024, 1024)",True,0
+getattr_17,misc,[],[],[],"{""'view_9""}",{'e'},"[(1024, 1024, 1024)]","(1,)",True,0
+eq,misc,[],[],[],"{""'getattr_17""}",set(),"[(1,)]","(1,)",True,0
+softmax,VECsoftmax,"[['VECsoftmax', (1048576, 1024)]]","[['VECmul', (1048576, 1024)], ['VECsoftmax', (1048576, 1024)]]",[],"{""'view_9""}",{'dropou'},"[(1024, 1024, 1024)]","(1024, 1024, 1024)",True,0
+dropout,dropout,"[['MEM', ((1024, 1024, 1024), (1024, 1024, 1024))]]","[['MEM', ((1024, 1024, 1024),)], ['MEM', ((1024, 1024, 1024),)]]",[],"{""'softmax""}",{'bmm_'},"[(1024, 1024, 1024)]","(1024, 1024, 1024)",True,0
+bmm_1,BMM,"[['BMM', (1024, 1024, 1024, 64)]]","[['BMM', (1024, 1024, 64, 1024)], ['BMM', (1024, 1024, 1024, 64)]]",[],"{""'dropout"", ""'view_7""}","{'size_1', 'view_1'}","[(1024, 1024, 1024), (1024, 1024, 64)]","(1024, 1024, 64)",True,0
+size_10,misc,[],[],[],"{""'bmm_1""}",{'ne_'},"[(1024, 1024, 64)]","(1,)",True,0
+mul_8,misc,[],[],[],"{""'getitem_11""}",{'ne_'},"[(1,)]","(1,)",True,0
+ne_2,misc,[],[],[],"{""'getitem_12"", ""'mul_8"", ""'size_10""}",set(),"[(1,), (1,), (1,)]","(1,)",True,0
+view_10,misc,[],[],[],"{""'bmm_1"", ""'getitem_11"", ""'getitem_12""}",{'transpose_'},"[(1024, 1024, 64), (1,), (1,)]","(32, 32, 1024, 64)",True,0
+transpose_4,misc,[],[],[],"{""'view_10""}",{'reshap'},"[(32, 32, 1024, 64)]","(32, 1024, 32, 64)",True,0
+reshape,misc,[],[],[],"{""'transpose_4"", ""'getitem_11"", ""'getitem_12""}",{'model_decoder_layers_0_self_attn_out_pro'},"[(32, 1024, 32, 64), (1,), (1,)]","(32, 1024, 2048)",True,0
+model_decoder_layers_0_self_attn_out_proj,Linear,"[['Linear', (32768, 2048, 2048)]]","[['Linear', (32768, 2048, 2048)]]",[],"{""'reshape""}",{'dropout_'},"[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+dropout_1,dropout,"[['MEM', ((32, 1024, 2048), (32, 1024, 2048))]]","[['MEM', ((32, 1024, 2048),)], ['MEM', ((32, 1024, 2048),)]]",[],"{""'model_decoder_layers_0_self_attn_out_proj""}",{'add_1'},"[(32, 1024, 2048)]","(32, 1024, 2048)",True,0
+add_10,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'add_5"", ""'dropout_1""}","{'reshape_', 'size_1'}","[(32, 1024, 2048), (32, 1024, 2048)]","(32, 1024, 2048)",True,0
+size_11,misc,[],[],[],"{""'add_10""}",{'view_1'},"[(32, 1024, 2048)]","(1,)",True,0
+size_12,misc,[],[],[],"{""'add_10""}",{'reshape_'},"[(32, 1024, 2048)]","(1,)",True,0
+reshape_1,misc,[],[],[],"{""'size_12"", ""'add_10""}","{'add_1', 'model_decoder_layers_0_final_layer_nor'}","[(32, 1024, 2048), (1,)]","(32768, 2048)",True,0
+model_decoder_layers_0_final_layer_norm,VECln,"[['VECln', (32768, 2048)]]","[['VECmul', (32768, 2048)]]","[['VECadd', [1, 2048]], ['VECadd', [1, 2048]]]","{""'reshape_1""}",{'model_decoder_layers_0_fc'},"[(32768, 2048)]","(32768, 2048)",False,0
+model_decoder_layers_0_fc1,Linear,"[['Linear', (32768, 2048, 8192)]]","[['Linear', (32768, 8192, 2048)]]",[],"{""'model_decoder_layers_0_final_layer_norm""}",{'model_decoder_layers_0_activation_f'},"[(32768, 2048)]","(32768, 8192)",False,0
+model_decoder_layers_0_activation_fn,VECrelu,"[['VECrelu', (32768, 8192)]]","[['VECrelu', (32768, 8192)]]",[],"{""'model_decoder_layers_0_fc1""}",{'model_decoder_layers_0_fc'},"[(32768, 8192)]","(32768, 8192)",True,0
+model_decoder_layers_0_fc2,Linear,"[['Linear', (32768, 8192, 2048)]]","[['Linear', (32768, 2048, 8192)]]",[],"{""'model_decoder_layers_0_activation_fn""}",{'dropout_'},"[(32768, 8192)]","(32768, 2048)",False,0
+dropout_2,dropout,"[['MEM', ((32768, 2048), (32768, 2048))]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'model_decoder_layers_0_fc2""}",{'add_1'},"[(32768, 2048)]","(32768, 2048)",True,0
+add_11,VECadd,"[['VECadd', (32768, 2048)]]","[['MEM', ((32768, 2048),)], ['MEM', ((32768, 2048),)]]",[],"{""'dropout_2"", ""'reshape_1""}",{'view_1'},"[(32768, 2048), (32768, 2048)]","(32768, 2048)",True,0
+view_11,misc,[],[],[],"{""'size_11"", ""'add_11""}",{'model_decoder_final_layer_nor'},"[(32768, 2048), (1,)]","(32, 1024, 2048)",True,0
+model_decoder_final_layer_norm,VECln,"[['VECln', (32768, 2048)]]","[['VECmul', (32768, 2048)]]","[['VECadd', [1, 2048]], ['VECadd', [1, 2048]]]","{""'view_11""}",{'lm_hea'},"[(32, 1024, 2048)]","(32, 1024, 2048)",False,0
+lm_head,Linear,"[['Linear', (32768, 2048, 50272)]]","[['Linear', (32768, 50272, 2048)]]",[],"{""'model_decoder_final_layer_norm""}",{'contiguous_'},"[(32, 1024, 2048)]","(32, 1024, 50272)",False,0
+contiguous_3,contiguous,"[['MEM', ((32, 1024, 50272), (32, 1024, 50272))]]","[['MEM', ((32, 1024, 50272),)], ['MEM', ((32, 1024, 50272),)]]",[],"{""'lm_head""}",{'outpu'},"[(32, 1024, 50272)]","(32, 1024, 50272)",True,0
+output,output,[],[],[],"{""'contiguous_1"", ""'contiguous"", ""'contiguous_3""}",set(),"[(32, 1024, 50272), (32, 32, 1024, 64), (32, 32, 1024, 64)]","(32, 1024, 50272)",True,0

@@ -1,0 +1,11 @@
+{
+    "architecture": "ROOFLINE_VEC",
+    "name": "ROOFLINE_VEC",
+    "features": [
+        "B",
+        "H",
+        "MemPerO",
+        "SingleFLOPs",
+        "Mem_Bw"
+    ]
+}

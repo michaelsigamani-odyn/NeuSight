@@ -1,0 +1,11 @@
+{
+    "architecture": "HEURISTIC_VEC",
+    "name": "HEURISTIC_VEC",
+    "features": [
+        "B",
+        "H",
+        "MemPerO",
+        "SingleFLOPs",
+        "Mem_Bw"
+    ]
+}
