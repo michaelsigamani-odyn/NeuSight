@@ -1,5 +1,8 @@
 # NeuSight
-Tes
+
+Test
+Comment Michael: I've taken the original code and re-ran the MLP predictor for qwen MoE architecture so profiling runs can be extrapolated sensibly to new runs. This should work for mistral profoling too since it the same initial architecture. Please have a read of AGENT.md to understand what was learnt and how to apply this going forward. 
+
 NeuSight is a framework designed to predict the performance of deep learning training and inference on various GPUs. For more details, please refer to our paper, [Forecasting GPU Performance for Deep Learning Training and Inference](https://dl.acm.org/doi/10.1145/3669940.3707265).
 
 ## Installation
